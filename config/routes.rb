@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
 
-  get 'friendships/create'
-  get 'friendships/update'
-  get 'friendships/destroy'
+  resources :notifications, only: :index
+
+  resources :friendships, only: [:create, :update, :destroy]
   
   devise_for :users
 

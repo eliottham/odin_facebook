@@ -13,7 +13,7 @@ class User < ApplicationRecord
            through: :received_friendships, source: :user
   has_many :pending_friends, -> { where(friendships: { accepted: false }) }, 
            through: :friendships, source: :friend
-  has_many :requested_friendships, -> { where(friendships: { accepted: false }) }, 
+  has_many :requested_friends, -> { where(friendships: { accepted: false }) }, 
            through: :received_friendships, source: :user
 
   # Call all friends
@@ -21,13 +21,23 @@ class User < ApplicationRecord
   	active_friends | received_friends
   end
 
-  # Call pending sent or received
+  # Call friends of pending requests
   def pending
-  	pending_friends | requested_friendships
+  	pending_friends | requested_friends
   end
 
   # Get full name of user
   def full_name
   	"#{first_name} #{last_name}"
   end
+
+  # Get friendship between two users
+  def friendship_with(other_user)
+    if active_friends.include?(other_user) or pending_friends.include?(other_user)
+      friendships.find_by(friend_id: other_user.id)
+    elsif received_friends.include?(other_user) or requested_friends.include?(other_user)
+      received_friendships.find_by(user_id: other_user.id)
+    end
+  end
+
 end

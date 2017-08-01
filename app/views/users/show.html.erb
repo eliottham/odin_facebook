@@ -1,2 +1,9 @@
 <h1><%= @user.full_name %></h1>
-<%= link_to "Edit Account", edit_user_registration_path %>
+<%= render 'friend_options' if current_user != @user %>
+
+<h2>Friends List:</h2>
+	<ul>
+		<% @user.friends.each do |friend| %>
+			<li><%= link_to friend.full_name, friend %></li>
+		<% end %>
+	</ul>

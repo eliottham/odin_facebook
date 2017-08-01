@@ -12,8 +12,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(id: params[:id])
-    @friendship.update(status: "accepted")
+    @friendship = Friendship.find(params[:id])
+    @friendship.accepted = true
     if @friendship.save
       redirect_to root_url, notice: "Friend request confirmed."
     else
@@ -22,7 +22,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-	  @friendship = Friendship.find_by(id: params[:id])
+	  @friendship = Friendship.find(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friend."
     redirect_to :back

@@ -1,0 +1,7 @@
+<h1>Friend Requests</h1>
+<% @requested_friends.each do |friend| %>
+	<% friendship = current_user.friendship_with(friend) %>
+	<%= friend.full_name %>
+	<%= link_to "Confirm", friendship_path(friendship), method: "put" %>
+	<%= link_to "Decline Request", friendship_path(friendship), method: :delete %>
+<% end %>
