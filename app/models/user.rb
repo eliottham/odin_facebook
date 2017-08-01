@@ -16,6 +16,14 @@ class User < ApplicationRecord
   has_many :requested_friends, -> { where(friendships: { accepted: false }) }, 
            through: :received_friendships, source: :user
 
+  has_many :posts, foreign_key: "author_id"
+
+  has_many :comments
+  has_many :commented_posts, through: :comments, source: :post
+
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+
   # Call all friends
   def friends
   	active_friends | received_friends

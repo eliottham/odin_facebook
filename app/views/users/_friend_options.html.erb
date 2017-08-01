@@ -4,5 +4,6 @@
 	<%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
 <% else %>
 	<p><%= "\u2713".encode('utf-8') %>Friends</p>
+	<%= link_to "Unfriend", friendship_path(current_user.friendship_with(@user)), method: :delete %>
 <% end %>
 
