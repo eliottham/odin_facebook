@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :friendships
-  has_many :received_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :friendships, dependent: :destroy
+  has_many :received_friendships, foreign_key: "friend_id", class_name: "Friendship", 
+                                                            dependent: :destroy
 
   has_many :active_friends, -> { where(friendships: { accepted: true }) }, 
   				 through: :friendships, source: :friend
@@ -16,12 +17,12 @@ class User < ApplicationRecord
   has_many :requested_friends, -> { where(friendships: { accepted: false }) }, 
            through: :received_friendships, source: :user
 
-  has_many :posts, foreign_key: "author_id"
+  has_many :posts, foreign_key: "author_id", dependent: :destroy
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :commented_posts, through: :comments, source: :post
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
   # Call all friends

@@ -1,9 +1,9 @@
-<% if current_user.pending_friends.include?(@user) %>
-	<p>Friend Request Pending.</p>
-<% elsif !current_user.friends.include?(@user) %>
-	<%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
+<% if current_user.pending_friends.include?(object) %>
+	<p>Friend request pending.</p>
+<% elsif !current_user.friends.include?(object) %>
+	<%= link_to "Add Friend", friendships_path(friend_id: object), method: :post %>
 <% else %>
-	<p><%= "\u2713".encode('utf-8') %>Friends</p>
-	<%= link_to "Unfriend", friendship_path(current_user.friendship_with(@user)), method: :delete %>
+	<%= "\u2713 Friends" %>
+	<%= link_to "Unfriend", friendship_path(current_user.friendship_with(object)), method: :delete %>
 <% end %>
 

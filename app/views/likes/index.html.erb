@@ -1,0 +1,9 @@
+<ul>
+	<% @likes.each do |like| %>
+		<li>
+			<%= link_to like.user.full_name, like.user %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "Back", request.referrer or root_url %>

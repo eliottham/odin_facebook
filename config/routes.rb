@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
 
   resources :notifications, only: :index
-
+  resources :posts, only: [:create, :destroy]
+  resources :likes, only: [:index, :create, :destroy]
   resources :friendships, only: [:create, :update, :destroy]
   
   devise_for :users

@@ -1,1 +1,5 @@
-<%= link_to "Sign up", new_user_registration_path %>
+<% if user_signed_in? %>
+	<%= render 'shared/post_form' %>
+<% else %>
+	<%= link_to "Sign up", new_user_registration_path %>
+<% end %>

@@ -1,5 +1,6 @@
 <h1><%= @user.full_name %></h1>
-<%= render 'friend_options' if current_user != @user %>
+<%= render 'friend_options', object: @user if current_user != @user %>
+<%= render 'shared/post_form' if current_user == @user %>
 
 <h2>Friends List:</h2>
 	<ul>
@@ -7,3 +8,8 @@
 			<li><%= link_to friend.full_name, friend %></li>
 		<% end %>
 	</ul>
+
+<h2><%= "#{@user.full_name}'s Posts:" %></h2>
+<ul class="posts">
+	<%= render @user.posts %>
+</ul>
