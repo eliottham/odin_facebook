@@ -1,0 +1,5 @@
+<%= form_for :comment, url: post_comments_path(object) do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<div class="field"><%= f.text_area :content, placeholder: "Write a comment..." %></div>
+	<%= f.submit "Send" %>
+<% end %>

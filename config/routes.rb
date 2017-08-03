@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   
 
   resources :notifications, only: :index
-  resources :posts, only: [:create, :destroy]
-  resources :likes, only: [:index, :create, :destroy]
-  resources :friendships, only: [:create, :update, :destroy]
+  OdinFacebook::Application.routes.draw do
+  	resources :posts, only: [:create, :destroy] do
+  		resources :likes, only: [:index, :create]
+  		resources :comments, only: [:index, :create]
+  	end
+  end
   
+  resources :likes, only: :destroy
+  resources :comments, only: :destroy
+  resources :friendships, only: [:create, :update, :destroy]
+
   devise_for :users
 
   resources :users, only: [:index, :show]

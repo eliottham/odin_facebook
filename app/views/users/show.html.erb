@@ -2,7 +2,7 @@
 <%= render 'friend_options', object: @user if current_user != @user %>
 <%= render 'shared/post_form' if current_user == @user %>
 
-<h2>Friends List:</h2>
+<h2>Friends <%= "(#{@user.friends.count})" %></h2>
 	<ul>
 		<% @user.friends.each do |friend| %>
 			<li><%= link_to friend.full_name, friend %></li>
@@ -10,6 +10,4 @@
 	</ul>
 
 <h2><%= "#{@user.full_name}'s Posts:" %></h2>
-<ul class="posts">
-	<%= render @user.posts %>
-</ul>
+<%= render @user.posts %>

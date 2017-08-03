@@ -37,8 +37,17 @@
   }
 }
 /* Posts */
-.posts {
+.post {
   display: block;
+  a:visited {
+    color: blue;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .timestamp {
