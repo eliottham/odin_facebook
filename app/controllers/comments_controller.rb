@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 		comment = post.comments.build(comments_params)
 		if comment.save
 			flash[:notice] = "Comment posted."
-			redirect_to request.referrer or root_url
+			redirect_to request.referrer || root_url
 		else
 			redirect_to request.referrer, flash: { :error => comment.errors.full_messages.join(', ') }
 		end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 	def destroy
 		Comment.find(params[:id]).destroy
 		flash[:notice] = "Comment deleted."
-		redirect_to request.referrer or root_url
+		redirect_to request.referrer || root_url
 	end
 
 
@@ -28,5 +28,13 @@ class CommentsController < ApplicationController
 		def comments_params
 			params.require(:comment).permit(:user_id, :content)
 		end
+
+		# Redirect to the page where the post was seen (either user's show page or home)
+	  def save_previous_url
+	    url = request.path_info
+	    if url.include?('users' || 'home')
+	      session[:my_previous_url] = URI(request.referer || '').path
+	    end
+	  end
 
 end

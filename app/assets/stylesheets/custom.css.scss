@@ -1,3 +1,19 @@
+/* Universal */
+body {
+  background-color: #EAEAEA;
+}
+
+a:visited {
+  color: #365899;
+}
+a:link {
+  text-decoration: none;
+  color: #365899;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 /* Flash */
 .alert-error {
     background-color: #f2dede;
@@ -36,28 +52,89 @@
     margin: 0 0 30px 0;
   }
 }
+
+
+/* Users */
+.user_header {
+  display: block;
+  margin-top: 50px;
+  margin-bottom: 50px;
+ 
+  .name{
+    display: inline-block;
+    line-height: 80px;
+    vertical-align: middle;
+    font-size: 30px;
+
+    a:link{
+      color:black;
+      text-decoration: none;
+    }
+    a:visited{
+      color:black;
+    }
+  }
+
+  .gravatar{
+    height: 80px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.like {
+  .name{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .gravatar{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 /* Posts */
 .post {
   display: block;
-  a:visited {
-    color: blue;
+  margin: 50px auto 50px auto;
+  border: solid;
+  width: 500px;
+  padding: 20px;
+  background-color: white;
+  border-color: white;
+
+
+  .header{
+    height: 40px;
+    .name{
+      display: inline-block;
+      vertical-align: 50%; 
+    }
+    .gravatar{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .timestamp{
+      position: relative;
+      font-size: 14px;
+      margin-left: 45px;
+      margin-top: -20px;
+    }
   }
-  a:link {
-    text-decoration: none;
+
+  .content{
+    position: relative;
+    font-size: 30px;
+    margin: 15px 0 15px 0;
   }
-  a:hover {
-    text-decoration: underline;
+
+  .comment .field{
+    width: 100px;
   }
+  
 }
 
-.timestamp {
-  font-size: 15px;
-  margin-bottom: 5px;
-}
 
-.content {
-  font-size: 30px;
-}
 
 .likes {
   margin-top: 5px;

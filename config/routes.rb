@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
 
-  resources :notifications, only: :index
   OdinFacebook::Application.routes.draw do
   	resources :posts, only: [:create, :destroy] do
   		resources :likes, only: [:index, :create]
@@ -20,5 +19,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get '/home', to: 'static_pages#home'
+  get '/notifications', to: 'static_pages#notifications'
 
 end

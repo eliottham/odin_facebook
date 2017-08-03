@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
 
+
+
     protected
 
     def configure_permitted_parameters
@@ -11,12 +13,5 @@ class ApplicationController < ActionController::Base
     	devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
     end
 
-    # Redirect to the page where the post was seen (either user's show page or home)
-    def save_previous_url
-			url = request.path_info
-			if url.include?('users' || 'home')
-				session[:my_previous_url] = URI(request.referer || '').path
-			end
-		end
 end
 

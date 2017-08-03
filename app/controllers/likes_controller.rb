@@ -10,17 +10,23 @@ class LikesController < ApplicationController
 		like = post.likes.build(user_id: current_user)
 		like = current_user.likes.build(post_id: params[:post_id])
 		if like.save
-			flash[:notice] = "Liked #{like.post.author.first_name}'s post."
-			redirect_to request.referrer
+			redirect_to request.referrer || root_url, notice: "Liked #{like.post.author.first_name}'s post."
 		else
-			flash[:error] = "Unable to like post."
-			redirect_to request.referrer
+			redirect_to request.referrer, alert: "Unable to like post."
 		end
 	end
 
 	def destroy
 		Like.find(params[:id]).destroy
-		flash[:notice] = "Unliked post."
-		redirect_to request.referrer
+		redirect_to request.referrer, notice: "Unliked post."
 	end
+
+	private
+	  # Redirect to the page where the post was seen (either user's show page or home)
+    def save_previous_url
+			url = request.path_info
+			if url.include?('users' || 'home')
+				session[:my_previous_url] = URI(request.referer).path
+			end
+		end
 end
