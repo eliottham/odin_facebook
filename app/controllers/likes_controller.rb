@@ -22,11 +22,11 @@ class LikesController < ApplicationController
 	end
 
 	private
+
 	  # Redirect to the page where the post was seen (either user's show page or home)
     def save_previous_url
-			url = request.path_info
-			if url.include?('users' || 'home')
-				session[:my_previous_url] = URI(request.referer).path
+			unless request.referer.include?('likes')
+				session[:previous_url] = URI(request.referrer).path
 			end
 		end
 end
