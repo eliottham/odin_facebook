@@ -9,9 +9,8 @@
 <h2>Friends <%= "(#{@user.friends.count})" %></h2>
 	<ul>
 		<% @user.friends.each do |friend| %>
-			<li><%= link_to friend.full_name, friend %></li>
+			<li><%= render friend %></li>
 		<% end %>
 	</ul>
 
-<h2><%= "#{@user.full_name}'s Posts:" %></h2>
 <%= render @user.posts %>

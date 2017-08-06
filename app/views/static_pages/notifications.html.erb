@@ -1,11 +1,13 @@
-<ul class="requests">
+<ul>
 	<h1>Friend Requests (<%= @friend_requests.count %>)</h1>
 	<% @friend_requests.each do |friend| %>
 		<li>
 			<% friendship = current_user.friendship_with(friend) %>
-			<%= link_to friend.full_name, friend %>
-			<%= link_to "Confirm", friendship_path(friendship), method: "put" %>
-			<%= link_to "Decline Request", friendship_path(friendship), method: :delete %>
+			<div class="request">
+				<%= render friend %>
+				<%= link_to "Confirm", friendship_path(friendship), method: "put", id: "confirm" %>
+				<%= link_to "Decline Request", friendship_path(friendship), method: :delete, id: "decline" %>
+			</div>
 		</li>
 	<% end %>
 </ul>

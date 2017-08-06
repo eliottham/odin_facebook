@@ -10,15 +10,15 @@ class LikesController < ApplicationController
 		like = post.likes.build(user_id: current_user)
 		like = current_user.likes.build(post_id: params[:post_id])
 		if like.save
-			redirect_to request.referrer || root_url, notice: "Liked #{like.post.author.first_name}'s post."
+			redirect_to :back || root_url, notice: "Liked #{like.post.author.first_name}'s post."
 		else
-			redirect_to request.referrer, alert: "Unable to like post."
+			redirect_to :back, alert: "Unable to like post."
 		end
 	end
 
 	def destroy
 		Like.find(params[:id]).destroy
-		redirect_to request.referrer, notice: "Unliked post."
+		redirect_to :back, notice: "Unliked post."
 	end
 
 	private

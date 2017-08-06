@@ -1,9 +1,6 @@
 <div class="post_form">
-	Create a Post:
 	<%= form_for @post do |f| %>
-		<div class="field">
-			<%= f.text_area :content, placeholder: "What's on your mind, #{current_user.first_name}?" %>
-		</div>
-			<%= f.submit "Post" %>
+		<%= f.text_area :content, placeholder: "What's on your mind, #{current_user.first_name}?" %>
+		<br><%= f.submit "Post" %>
 	<% end %>
 </div>

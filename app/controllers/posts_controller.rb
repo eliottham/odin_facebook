@@ -2,9 +2,9 @@ class PostsController < ApplicationController
 	def create
 		@post = current_user.posts.build(post_params)
 		if @post.save
-			redirect_to request.referrer || root_url, notice: "Post created."
+			redirect_to :back || root_url, notice: "Post created."
 		else
-			redirect_to request.referrer, flash: { :error => @post.errors.full_messages.join(', ') }
+			redirect_to :back, flash: { alert: @post.errors.full_messages.join(', ') }
 		end
 	end
 
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
 	def destroy
 		Post.find(params[:id]).destroy
-		redirect_to request.referrer || root_url, notice: "Post deleted."
+		redirect_to :back || root_url, notice: "Post deleted."
 	end
 
 

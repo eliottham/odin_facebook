@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to :back || root_url, notice: "Friend request confirmed."
     else
-      redirect_to root_url, notice: "Could not confirm friend request."
+      redirect_to root_url, alert: "Could not confirm friend request."
     end
   end
 

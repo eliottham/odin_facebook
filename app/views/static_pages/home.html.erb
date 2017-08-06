@@ -1,8 +1,6 @@
-<div class="home">
-	<% if user_signed_in? %>
-		<%= render 'shared/post_form' %>
-		<%= render @feed %>
-	<% else %>
-		<%= link_to "Sign up", new_user_registration_path %>
-	<% end %>
-</div>
+<% if user_signed_in? %>
+	<%= render 'shared/post_form' %>
+	<%= render @feed %>
+<% else %>
+	<%= link_to "Sign up", new_user_registration_path %>
+<% end %>

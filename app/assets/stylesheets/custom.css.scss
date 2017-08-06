@@ -124,23 +124,81 @@ a:hover {
 
   .content{
     position: relative;
-    font-size: 30px;
+    font-size: 20px;
     margin: 15px 0 15px 0;
+    width: 100%;
   }
 
-  .comment .field{
-    width: 100px;
+  .comment .field {
+    display: inline-block;
   }
-  
+
+  .comment .field textarea{
+    width: 400px;
+    height: 25px;
+  }
+
+  .comment a {
+    padding-left: 370px;
+    font-size: 13px;
+  }
 }
 
+.like .index {
+  float: right;
+  padding-right: 65px;
+  font-size: 13px;
+} 
 
-
-.likes {
-  margin-top: 5px;
-  font-size: 15px;
+.button {
+  vertical-align: 100%;
+  height: 30px;
+  border-width: 1px;
+  background-color: #365899;
+  border-color: white;
+  color: white;
 }
 
-.comments {
-  font-size: 15px;
+.request{
+  .gravatar {
+    display: inline-block;
+  }
+
+  .name {
+    display: inline-block;
+  }
+
+  #confirm {
+    padding-left: 25px;
+  }
+
+  #decline {
+    padding-left: 10px;
+  }
+}
+.gravatar {
+  display: inline-block;
+}
+
+.name {
+  display: inline-block;
+}
+
+.post_form { 
+  text-align: center;
+  clear: right;
+
+  textarea {
+    width: 500px;
+    height: 60px;
+    font-size: 12pt;
+  }
+}
+
+.navbar {
+  margin-bottom: 50px;
+
+  .login{
+    float: right;
+  }
 }

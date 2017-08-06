@@ -12,12 +12,10 @@
 	<div class="content"><%= post.content %></div>
 	<div class="like">
 		<%= render 'posts/like_options', object: post %>
+		<%= link_to pluralize(post.likes.count, "Like"), post_likes_path(post), class: "index" %>
 	</div>
 	<div class="comment">
 		<%= render 'posts/comment_form', object: post %>
-	</div>
-	<div class="like"><%= link_to pluralize(post.likes.count, "Like"), post_likes_path(post) %></div>
-	<div class="comment">
 		<%= link_to pluralize(post.comments.count, "Comment"), post_comments_path(post) %>
 	</div> 
 </div>
