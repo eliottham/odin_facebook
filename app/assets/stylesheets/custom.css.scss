@@ -202,3 +202,24 @@ a:hover {
     float: right;
   }
 }
+
+.home {
+  margin-top: 200px;
+  text-align: center;
+
+  a {
+    color: white;
+  }
+
+  h1 {
+    color: #365899;
+  }
+
+  .button {
+    width: 50px;
+    display: inline-block;
+    background-color: #365899;
+    text-align: center;
+    padding: 20px 20px 10px 20px;
+  }
+}
